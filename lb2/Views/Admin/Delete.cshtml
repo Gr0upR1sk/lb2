@@ -1,0 +1,114 @@
+﻿@model lb2.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div style="margin-left:50px; margin-top:50px">
+        <h3>Are you sure you want to delete this?</h3>
+        <div class="form-horizontal" style="margin-left:70px">
+            <h4>User</h4>
+            @*<dl class="dl-horizontal">*@
+            @*<dt>
+                        @Html.DisplayNameFor(model => model.login)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.login)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.password)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.password)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.fullName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.fullName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.email)
+                    </dd>
+
+                </dl>*@
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+
+                    <p hidden="hidden">
+                        @Html.LabelFor(model => model.login, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </p>
+
+
+                    @Html.HiddenFor(model => model.login, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.login, "", new { @class = "text-danger" })
+
+                    <p>@Model.login</p>
+                </div>
+
+                <div class="form-group">
+                    <p hidden="hidden">
+                        @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </p>
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        <p>@Model.password</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p hidden="hidden">
+                        @Html.LabelFor(model => model.fullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </p>
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.fullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })
+                        <p>@Model.fullName</p>
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                        <p hidden="hidden">
+                            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </p>
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            <p>@Model.email</p>
+                        </div>
+                    </div>
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<lb2.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Edit your information", "Edit")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Full name
+        </th>
+        <th>
+            Email
+        </th> 
+    </tr>
+
+@foreach (var item in ViewBag.users) {
+    <tr>       
+        <td>
+            @item.fullName
+        </td>
+        <td>
+            @item.email
+        </td>        
+    </tr>
+}
+
+</table>
